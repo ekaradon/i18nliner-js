@@ -47,21 +47,6 @@ var I18nliner = {
       }
     }
 
-    // plugins need to be loaded last to allow them to get
-    //  the full config option when they are initialized
-    if (config.plugins && config.plugins.length > 0) {
-      this.loadPlugins(config.plugins);
-    }
-  },
-  loadPlugins: function loadPlugins(plugins) {
-    plugins.forEach(function (pluginName) {
-      var plugin = require(pluginName);
-      if (plugin.default) plugin = plugin.default;
-      plugin({
-        processors: this.Commands.Check.processors,
-        config: this.config
-      });
-    }.bind(this));
   },
 
 
